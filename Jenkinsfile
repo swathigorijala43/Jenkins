@@ -1,12 +1,18 @@
 pipeline {
   agent {
-    docker { image 'node:16-alpine' }
+    docker { 
+      image 'abhishekf5/maven-abhishek-docker-agent:v1' 
+      args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon
+    }
   }
   stages {
-    stage('test') {
+    stage('checkout') {
       steps {
-        sh 'node --version'
+        sh 'echo passedn'
+        git branch: 'main', url: 'https://github.com/swathigorijala43/Jenkins.git'
       }
     }
   }
 }
+
+        
