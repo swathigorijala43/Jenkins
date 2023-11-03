@@ -8,11 +8,17 @@ pipeline {
   stages {
     stage('checkout') {
       steps {
-        sh 'echo passedn'
+        sh 'echo passed'
         git branch: 'main', url: 'https://github.com/swathigorijala43/Jenkins.git'
       }
     }
   }
+  stage('Build and Test') {
+      steps {
+        sh 'ls -ltr'
+        sh 'cd spring-boot-app && mvn clean package' // build the project and create a JAR file
+      }
+    }
 }
 
         
