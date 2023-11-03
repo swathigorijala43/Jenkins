@@ -18,7 +18,6 @@ pipeline {
         sh 'cd spring-boot-app && mvn clean package' // build the project and create a JAR file
       }
     }
-  }
    stage('Build and Push Docker Image') {
       environment {
         DOCKER_IMAGE = "swathigorijala/java-practice:${BUILD_NUMBER}"
@@ -35,6 +34,7 @@ pipeline {
         }
       }
     }
+  }
 }
 
         
